@@ -38,7 +38,7 @@ enum SpawnType {
  * @param waitingQueue a queue of the players waiting to join (see include/queue.inc)
  * @noreturn
  */
-forward void Retakes_OnPreRoundEnqueue(Handle rankingQueue, Handle waitingQueue);
+forward void Retakes_OnPreRoundEnqueue(ArrayList rankingQueue, ArrayList waitingQueue);
 
 /**
  * Called after active players have been placed into the priority scoring queue
@@ -47,9 +47,10 @@ forward void Retakes_OnPreRoundEnqueue(Handle rankingQueue, Handle waitingQueue)
  * (rather than using the Retakes_SetRoundPoints native)
  *
  * @param rankingQueue a priority queue (see include/priorityqueue.inc)
+ * @param waitingQueue a queue of the players waiting to join (see include/queue.inc)
  * @noreturn
  */
-forward void Retakes_OnPostRoundEnqueue(Handle rankingQueue);
+forward void Retakes_OnPostRoundEnqueue(ArrayList rankingQueue, ArrayList waitingQueue);
 
 /**
  * Called when the bombsite for the round is decided.
@@ -134,7 +135,7 @@ native bool Retakes_IsInQueue(int client);
  * @param format string message
  * @noreturn
  */
-native void Retakes_Message(int client, const char[] format, any:...);
+native void Retakes_Message(int client, const char[] format, any ...);
 
 /**
  * Sends a retake formatted message to all clients.
@@ -142,7 +143,7 @@ native void Retakes_Message(int client, const char[] format, any:...);
  * @param format string message
  * @noreturn
  */
-native void Retakes_MessageToAll(const char[] format, any:...);
+native void Retakes_MessageToAll(const char[] format, any ...);
 
 /**
  * Returns the number of terrorists for the current round.
